@@ -1,8 +1,6 @@
-QT += core gui widgets
+QT       += core gui
 
-
-
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets quickwidgets
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++17
 
@@ -12,16 +10,13 @@ CONFIG += c++17
 
 SOURCES += \
     main.cpp \
-    mainwindow.cpp \
-    vehicle.cpp
+    vehicle_info.cpp
 
 HEADERS += \
-    mainwindow.h \
-    vehicle.h
+    vehicle_info.h
 
 FORMS += \
-    mainwindow.ui \
-    vehicle.ui
+    vehicle_info.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -29,10 +24,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 RESOURCES += \
-    Icon.qrc \
-    qml.qrc \
     vehicle_image.qrc \
-    zetong-li-mVqTumQH-c0-unsplash.qrc
-
-DISTFILES += \
-    zetong-li-mVqTumQH-c0-unsplash.jpg
+    vehicle_image.qrc

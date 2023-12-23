@@ -3,7 +3,7 @@
 
 #include <QMainWindow>
 #include <QVariant>
-
+#include "vehicle.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {

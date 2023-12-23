@@ -325,7 +325,7 @@
            <x>0</x>
            <y>240</y>
            <width>461</width>
-           <height>105</height>
+           <height>113</height>
           </rect>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_6">
@@ -407,7 +407,11 @@
            </widget>
           </item>
           <item>
-           <widget class="QLineEdit" name="lineEdit_SignUp_Email"/>
+           <widget class="QLineEdit" name="lineEdit_SignUp_Email">
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
           </item>
          </layout>
         </widget>
@@ -416,7 +420,7 @@
         <property name="geometry">
          <rect>
           <x>460</x>
-          <y>0</y>
+          <y>10</y>
           <width>361</width>
           <height>591</height>
          </rect>
@@ -516,7 +520,7 @@
      <x>0</x>
      <y>0</y>
      <width>839</width>
-     <height>26</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menumaps">
