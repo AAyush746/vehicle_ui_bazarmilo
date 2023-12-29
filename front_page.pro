@@ -30,9 +30,14 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     Icon.qrc \
+<<<<<<< HEAD
     qml.qrc \
     vehicle_image.qrc \
     zetong-li-mVqTumQH-c0-unsplash.qrc
 
 DISTFILES += \
     zetong-li-mVqTumQH-c0-unsplash.jpg
+=======
+    assets.qrc \
+    qml.qrc
+>>>>>>> other-remote/main

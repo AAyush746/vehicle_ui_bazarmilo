@@ -26,21 +26,15 @@ MainWindow::MainWindow(QWidget *parent)
     // this will hide the push button " check your work"
     ui->check_your_work->hide();
     // these two lines are for adding picture
-    QPixmap pix("C:/Users/safal/OneDrive/Desktop/BazarMilo/Assets/front_image.png");
-    ui->label_pic->setPixmap(pix);
     QVBoxLayout *mainLayout = new QVBoxLayout(ui->centralwidget);
 
     QGroupBox *groupBox = new QGroupBox("Group Box");
     groupBox->setStyleSheet("QGroupBox { background-color: #FFE4C4; border: 2px solid #555555; border-radius: 2px; }");
     QVBoxLayout *groupBoxLayout = new QVBoxLayout(groupBox);
 
-    QLabel *labelPic = new QLabel;
-    labelPic->setPixmap(pix);
-    labelPic->setScaledContents(true);  // Ensure image scales within the QLabel
 
     QPushButton *checkYourWork = new QPushButton("Check Your Work");
 
-    groupBoxLayout->addWidget(labelPic, 0, Qt::AlignCenter); // Set alignment for label
     groupBoxLayout->addWidget(checkYourWork, 0, Qt::AlignCenter); // Set alignment for button
 
     groupBox->setLayout(groupBoxLayout); // Set layout for group box
@@ -49,14 +43,25 @@ MainWindow::MainWindow(QWidget *parent)
 
     // Set stretch factors for the main layout to control resizing behavior
     mainLayout->setStretchFactor(groupBox, 1);
+    ui->pushButton->setIcon(QIcon("qrc:/new/prefix1/Assets/home.png"));
+    ui->pushButton->setCheckable(true);
 
 
+    //Assigning list of ids for validification
+    validIds.append("1234h");
+    validIds.append("5678h");
+    validIds.append("9012h");
     // Connect signals of LineEdits to updateSubmitButtonState slot
     connect(ui->lineEdit_username, &QLineEdit::textChanged, this, &MainWindow::updateSubmitButtonState);
     connect(ui->lineEdit_password, &QLineEdit::textChanged, this, &MainWindow::updateSubmitButtonState);
     connect(ui->lineEdit_Email, &QLineEdit::textChanged, this, &MainWindow::updateSubmitButtonState);
     connect(ui->checkBox, &QCheckBox::stateChanged, this, &MainWindow::updateSubmitButtonState);
     connect(ui->pushButton_signup, SIGNAL(clicked()), this, SLOT(on_pushButton_signup_clicked()));
+    connect(ui->lineEdit_6, &QLineEdit::textChanged, this, &MainWindow::on_lineEdit_6_textChanged);
+    // Hide groupBox_3 by default
+    ui->groupBox_3->hide();
+    ui->label_17->hide();
+
 
 
     // Initially disable the submit button
@@ -80,6 +85,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->submit_signUp->setStyleSheet(buttonStyle);
     ui->pushButton_2->setStyleSheet(buttonStyle);
 
+
     // Set up a regular expression validator for email input
     QRegularExpression emailRegex("[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}");
 
@@ -89,7 +95,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     QString groupBoxStyle = "QGroupBox { background-color: #FFE4C4; border:  border-radius: 15px; }";
     ui->groupBox->setStyleSheet(groupBoxStyle);
-    QIcon icon("qrc:/../../../Downloads/home.png");  // Replace with your resource path
+    QIcon icon("qrc:/new/prefix1/Assets/home.png");  // Replace with your resource path
     ui->pushButton->setIcon(icon);
 }
 
@@ -99,13 +105,6 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-
-
-
-void MainWindow::on_actionNavigate_triggered()
-{
-    ui->stackedWidget->setCurrentIndex(1);
-}
 void MainWindow::on_lineEdit_username_textChanged(const QString &arg1) {
     Q_UNUSED(arg1);
     updateSubmitButtonState();
@@ -178,4 +177,63 @@ void MainWindow::on_pushButton_clicked()
 {
     ui->stackedWidget->setCurrentIndex(0);
 }
+
+
+
+
+void MainWindow::on_actionDashboard_triggered()
+{
+    ui->stackedWidget->setCurrentIndex(1);
+}
+
+
+void MainWindow::on_actionProducts_triggered()
+{
+    ui->stackedWidget->setCurrentIndex(4);
+}
+
+
+void MainWindow::on_actionUsers_triggered()
+{
+    ui->stackedWidget->setCurrentIndex(3);
+}
+
+
+void MainWindow::on_actionVehicles_triggered()
+{
+    ui->stackedWidget->setCurrentIndex(5);
+
+}
+
+
+void MainWindow::on_pushButton_3_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(1);
+}
+
+
+void MainWindow::on_lineEdit_6_textChanged(const QString &text)
+{
+    QString enteredId = text.trimmed(); // Remove leading/trailing spaces if needed
+    // Check if enteredId exists in the array of valid IDs (checking for complete matches)
+    bool idFound = false;
+    for (int i = 0; i < validIds.size(); ++i) {
+        if (enteredId == validIds[i]) {
+            idFound = true;
+            break;
+        }
+    }
+
+    // Show or hide groupBox_3 based on whether a matching ID was found
+    if (idFound) {
+        ui->label_17->hide();
+        ui->groupBox_3->show();
+    } else {
+        ui->groupBox_3->hide();
+        ui->label_17->show();
+    }
+
+
+}
+
 

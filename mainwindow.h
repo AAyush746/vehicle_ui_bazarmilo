@@ -21,8 +21,6 @@ public:
 
 private slots:
 
-    void on_actionNavigate_triggered();
-
     void on_pushButton_2_clicked();
 
 
@@ -43,8 +41,21 @@ private slots:
 
     void on_pushButton_clicked();
 
+    void on_actionDashboard_triggered();
+
+    void on_actionProducts_triggered();
+
+    void on_actionUsers_triggered();
+
+    void on_actionVehicles_triggered();
+
+    void on_pushButton_3_clicked();
+    void on_lineEdit_6_textChanged(const QString &text);
+
+
 private:
     Ui::MainWindow *ui;
+    QString validIds;
 signals:
     void setCenter(QVariant, QVariant);
     void addMarker(QVariant, QVariant);
